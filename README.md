@@ -4,7 +4,7 @@
 <p align="center">
     <img src="assets/Projektor.jpg" alt="Projektor"/>
     <br/>
-    <em>Der <a href="https://ams-osram.com/de/products/product-families/eviyos" target="_blank">EVIYOS Projektor</a> mit 25.600 einzeln ansteuerbaren LEDs. Damit können zum Beispiel Autoscheinwerfer so angesteuert werden, dass entgegenkommende Fahrzeuge nicht geblendet werden</em>
+    <em>Der <a href="https://ams-osram.com/de/products/product-families/eviyos" target="_blank">EVIYOS Projektor</a> mit 25.600 einzeln ansteuerbaren LEDs. Damit können zum Beispiel Autoscheinwerfer so angesteuert werden, dass entgegenkommende Fahrzeuge nicht geblendet werden. Im Bild is ein Demonstrator mit Raspberry, wie wir ihn im Kurs verwenden</em>
 </p>
 
 
