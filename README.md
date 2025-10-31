@@ -1,24 +1,11 @@
-# Pygame Programm mit VSCODE erstellen. Spiele mit dem NVIOS Projektor projizieren.  
-# Inhaltsverzeichnis
 
-- [Pygame Programm mit VSCODE erstellen. Spiele mit dem NVIOS Projektor projizieren.](#pygame-programm-mit-vscode-erstellen-spiele-mit-dem-nvios-projektor-projizieren)
-- [Teil 1: Python auf dem Raspberry einrichten und mit Vsiual Studio Code editieren](#teil-1-python-auf-dem-raspberry-einrichten-und-mit-vsiual-studio-code-editieren)
-    - [1. Projektverzeichnis erstellen und betreten](#1-projektverzeichnis-erstellen-und-betreten)
-    - [2. Python-Umgebung einrichten](#2-python-umgebung-einrichten)
-    - [3. Abhängigkeiten installieren](#3-abhängigkeiten-installieren)
-    - [4. Einfaches Programm mainpy erstellen](#4-einfaches-programm-mainpy-erstellen)
-    - [5. Das einfache Programm ausführen](#5-das-einfache-programm-ausführen)
-- [Teil 2: Arbeiten mit Pygame](#teil-2-arbeiten-mit-pygame)
-    - [Minimales Pygame-Programm](#minimales-pygame-programm)
-    - [Schritt-für-Schritt: Elemente zum pygame Bildschirm hinzufügen](#schritt-für-schritt-elemente-zum-pygame-bildschirm-hinzufügen)
-        - [Schritt 1: Ein Rechteck zeichnen](#schritt-1-ein-rechteck-zeichnen)
-        - [Schritt 2: Einen Kreis zeichnen](#schritt-2-einen-kreis-zeichnen)
-        - [Schritt 3: Text anzeigen](#schritt-3-text-anzeigen)
-        - [Schritt 4: Bewegte Elemente (Animation)](#schritt-4-bewegte-elemente-animation)
-        - [Schritt 5: Ein Rechteck mit der Tastatur bewegen](#schritt-5-ein-rechteck-mit-der-tastatur-bewegen)
-    - [Beispiel: Einfaches Pong-Spiel](#beispiel-einfaches-pong-spiel)
-- [Teil 3: Projektion mit dem EVIYOS Projektor](#teil-3-projektion-mit-dem-eviyos-projektor)
+# Pygame Spiele mit dem NVIYOS projizieren.  
 
+<p align="center">
+    <img src="assets/Projektor.jpg" alt="Projektor"/>
+    <br/>
+    <em>Der NVIYOS Projektor mit 25.600 einzeln ansteuerbaren LEDs. Damit können zum Beispiel Autoscheinwerfer so angesteuert werden, dass entgegenkommende Fahrzeuge nicht geblendet werden</em>
+</p>
 
 
 ### Herzlichen Dank
@@ -26,274 +13,86 @@
 |:---|:---:|
 
 
-# Teil 1: Python Projekt auf dem Raspberry Pi erstellen. Mit Visual Studio Code programmieren 
-## Projektverzeichnis erstellen und betreten
-Erstelle dein Projektverzeichnis und wechsle hinein (Beispiel: `~/Mintlabs/python-mit-projektor`):
+### Auf dem Raspberry Pi des ENVIOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, in dem du dein eigenes Pygame hinzufügen kannst. 
 
-```bash
-mkdir -p ~/Mintlabs/python-mit-projektor
-cd ~/Mintlabs/python-mit-projektor
-```
+### Dazu den Projekt-Ordner in Visual Studio Code öffnen
 
-### Visual Studio Code im Verzeichnis öffnen und Terminal benutzen
+Öffne Visual Studio Code und wähle im Menü **Datei → Ordner öffnen...** den Ordner `MintLabs/python-mit-projector` aus.  
 
-Öffne Visual Studio Code im Projektverzeichnis:
+### Im Ordner neue Datei `mein_pygame.py` erstellen
 
-```bash
-code .
-```
-Wichtig: nach code kommt ein Leerzeichen und dann der Punkt!
-
-Das integrierte Terminal in Visual Studio Code öffnest du mit `Strg + ö` (oder über das Menü: Terminal → Neues Terminal). Hier kannst du alle weiteren Befehle direkt ausführen.
-
-## Python-Umgebung .venv einrichten
-Es wird empfohlen, eine virtuelle Umgebung zu verwenden:
-
-```bash
-cd ~/Mintlabs/python-mit-projektor
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-## Abhängigkeiten installieren
-Installiere die pygame und numpy library. Du brauchst sie später bei `import pygame`.
-
-```bash
-pip install pygame numpy pyserial pandas pillow openpyxl
-```
+Erstelle eine neue Python-Datei namens `mein_pygame.py` im Verzeichnis `MintLabs/python-mit-projector`. Füge folgenden Beispielcode ein.
 
 
-## Einfaches Programm `main.py` erstellen
-
-Erstelle eine minimale Datei namens `main.py` mit folgendem Inhalt:
 
 ```python
-print("Hello World!")
+import pygame
+
+pygame.init()
+
+# Bildschirmauflösung ENVIOS projector 320*80
+screen = pygame.display.set_mode((320, 80))
+pygame.display.set_caption('Mein Programm')
+
+# Farben (EVIYOS projector kann nur Schwarz Weiss Grau)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GRAY = (128, 128, 128)
+
+running = True
+
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+
+    screen.fill(BLACK)
+    font = pygame.font.SysFont(None, 25)
+    text = font.render("Mein Programm - ESC to quit", True, WHITE)
+    text_rect = text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
+    screen.blit(text, text_rect)
+    pygame.display.flip()
+
+pygame.quit()
 ```
 
-## Das einfache Programm ausführen
-Du kannst das Programm `main.py` auf verschiedene Arten starten:
-
-- Über das Menü: **Ausführen → Ohne Debugging starten**
-- Über das Run-Symbol oben rechts im Editor
-- Oder im Terminal mit:
-
-```bash
-python main.py
-```
-
-
-Du siehst `Hello World!`im Terminal. 
+Wenn du das Porgramm startest wird, wie gewohnt der Pygame Bildschirm auf dem Monitor ausgegeben.
 
 
 ---
-# Teil 2: Arbeiten mit Pygame
-Pygame ist eine Sammlung von Python-Modulen zum Schreiben von Videospielen und Multimedia-Anwendungen. Es bietet Funktionen zum Erstellen von Fenstern, Zeichnen von Formen, Verarbeiten von Eingaben, Abspielen von Sounds und mehr. Siehe die [Pygame-Dokumentation](https://www.pygame.org/docs/) für Details.
+## Das Programm so erweitern, dass dein pygame screen gleichzeitig auf dem Projektor zu sehen ist
 
-## Minimales Pygame-Programm
-```python
-import pygame
+**Wichtig:** Der Projector verlangt eine Auflösung **320×80 Pixel** und verwendet nur **schwarz weiss** Töne. 
 
-pygame.init()
-screen = pygame.display.set_mode((640, 480))
-pygame.display.set_caption('Mein Pygame')
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill((0, 0, 0))
-    pygame.display.flip()
-pygame.quit()
-```
-
-## Schritt-für-Schritt: Elemente zum pygame Bildschirm hinzufügen
-Nach dem Setup kannst du Elemente zu deinem Pygame-Fenster hinzufügen.
-
-### Schritt 1: Ein Rechteck zeichnen
-Füge Folgendes in deine Hauptschleife ein, vor `pygame.display.flip()`:
-
-```python
-pygame.draw.rect(screen, (0, 128, 255), (50, 50, 150, 80))
-```
-
-### Schritt 2: Einen Kreis zeichnen
-Füge dies nach dem Rechteck-Code ein:
-
-```python
-pygame.draw.circle(screen, (255, 0, 0), (320, 240), 40)
-```
-
-### Schritt 3: Text anzeigen
-Um Text anzuzeigen, füge dies vor deiner Hauptschleife ein:
-
-```python
-font = pygame.font.SysFont(None, 48)
-```
-Und in deiner Hauptschleife, nach dem Zeichnen der Formen:
-
-```python
-text = font.render('Hello, Pygame!', True, (255, 255, 255))
-screen.blit(text, (200, 400))
-```
+Um den Projektor anzusteuern sind folgend Schritte nötig:
+1. Die Projectorklasse importieren und den projector starten: `projector = EVIYOSProjector()`
+2. Den pygame screen auf den projector spiegeln: `projector.display()`
+4. Den projector am Ende des Programms schließen: `projector.close()`
 
 
-## Schritt 4: Bewegte Elemente (Animation)
-Du kannst Elemente animieren, indem du ihre Position in jedem Frame aktualisierst. Hier ein Beispiel für ein bewegtes Rechteck:
+
+Zunächst ganz oben im code nach import pygame EVIOSProjector importieren und die Instanz projector starten
 
 ```python
 import pygame
-
-pygame.init()
-screen = pygame.display.set_mode((640, 480))
-pygame.display.set_caption('Bewegendes Rechteck')
-
-x = 0
-y = 200
-speed = 3
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, (0, 128, 255), (x, y, 100, 50))
-    x += speed
-    if x > 640:
-        x = -100  # Zurück zum linken Rand
-    pygame.display.flip()
-    pygame.time.delay(16)  # ~60 FPS
-pygame.quit()
+from helpers.eviyos_projector import EVIYOSProjector
+projector = EVIYOSProjector()
 ```
 
-Dieses Rechteck bewegt sich horizontal über den Bildschirm und springt zurück, wenn es den Rand erreicht. Du kannst Kreise, Bilder oder andere Elemente auf ähnliche Weise animieren, indem du ihre Koordinaten in jedem Frame aktualisierst.
 
-## Schritt 5: Ein Rechteck mit der Tastatur bewegen
-
-Du kannst ein Rechteck mit den Pfeiltasten steuern, indem du die Tastatureingaben abfragst und die Position entsprechend anpasst:
-
+Spiegle den pygame screen auf dem projector. Jedes mal, nachdem der pygame screen upgedated wurde
 ```python
-import pygame
-
-pygame.init()
-screen = pygame.display.set_mode((640, 480))
-pygame.display.set_caption('Rechteck mit Tastatur bewegen')
-
-x = 320
-y = 240
-speed = 5
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        x -= speed
-    if keys[pygame.K_RIGHT]:
-        x += speed
-    if keys[pygame.K_UP]:
-        y -= speed
-    if keys[pygame.K_DOWN]:
-        y += speed
-
-    screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, (0, 255, 0), (x, y, 60, 40))
-    pygame.display.flip()
-    pygame.time.delay(16)  # ~60 FPS
-
-pygame.quit()
+pygame.display.flip()
+projector.display(screen)
 ```
 
-Mit den Pfeiltasten kannst du das grüne Rechteck auf dem Bildschirm bewegen.
-
-## Beispiel: Pong-Spiel
-Hier ist ein Pong-Spiel mit Pygame:
-
+Schließe den projector am Ende des Programms
 ```python
-import pygame
-
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption('Pong')
-
-# Farben
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-
-# Ball-Startposition und Geschwindigkeit
-ball_x = 400
-ball_y = 300
-ball_dx = 4
-ball_dy = 4
-
-# Schläger
-paddle_width = 10
-paddle_height = 100
-paddle1_y = 250
-paddle2_y = 250
-paddle_speed = 6
-
-clock = pygame.time.Clock()
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        paddle1_y -= paddle_speed
-    if keys[pygame.K_s]:
-        paddle1_y += paddle_speed
-    if keys[pygame.K_UP]:
-        paddle2_y -= paddle_speed
-    if keys[pygame.K_DOWN]:
-        paddle2_y += paddle_speed
-
-    # Ball bewegen
-    ball_x += ball_dx
-    ball_y += ball_dy
-
-    # Ball an obere/untere Wand abprallen lassen
-    if ball_y <= 0 or ball_y >= 600 - 10:
-        ball_dy = -ball_dy
-
-    # Ball an Schläger abprallen lassen
-    if (ball_x <= paddle_width and paddle1_y < ball_y < paddle1_y + paddle_height) or \
-       (ball_x >= 800 - paddle_width - 10 and paddle2_y < ball_y < paddle2_y + paddle_height):
-        ball_dx = -ball_dx
-
-    # Ball zurücksetzen, wenn er aus dem Feld geht
-    if ball_x < 0 or ball_x > 800:
-        ball_x, ball_y = 400, 300
-        ball_dx = -ball_dx
-
-    screen.fill(BLACK)
-    pygame.draw.rect(screen, WHITE, (0, paddle1_y, paddle_width, paddle_height))
-    pygame.draw.rect(screen, WHITE, (800 - paddle_width, paddle2_y, paddle_width, paddle_height))
-    pygame.draw.ellipse(screen, WHITE, (ball_x, ball_y, 10, 10))
-    pygame.display.flip()
-    clock.tick(60)
-
 pygame.quit()
-```
-
-Mit W/S (links) und Pfeil hoch/runter (rechts) steuerst du die Schläger.
-
-# Teil 3: Projektion mit dem EVIYOS Projektor
-![OSRAM EVIYOS Projektor](assets/Projektor.jpg)
-
-
-Der OSRAM EVIYOS ist ein intelligenter, programmierbarer LED-Matrix-Projektor mit 25.600 einzeln ansteuerbaren LEDs, der für hochauflösende, flexible Lichtprojektionen entwickelt wurde. Er ermöglicht die gezielte Steuerung einzelner Pixel und wird u.a. in der Automobilbeleuchtung und für innovative Lichtanwendungen eingesetzt.
-
-Kopiere die dateien 
-RaspberryPiEVIYOS.py ins Verzeichnis helpers
-VIA_FPGA_Register_EV2.xlsx ins Verzeichnis /data
-
-```bash
-cp ~/Mintlabs/evios-library/RaspberryPiEVIYOS.py ~/Mintlabs/python-mit-projektor/helpers
-cp ~/Mintlabs/evios-library/VIA_FPGA_Register_EV2.xlsx ~/Mintlabs/python-mit-projektor/data
+projector.close()
 ```
 
