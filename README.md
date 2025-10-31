@@ -13,7 +13,7 @@
 |:---|:---:|
 
 
-### Auf dem Raspberry Pi des ENVIOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, in dem du dein eigenes Pygame hinzufügen kannst. 
+### Auf dem Raspberry Pi des ENVIOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, dem du dein eigenes Pygame hinzufügen kannst. 
 
 ### Dazu den Projekt-Ordner in Visual Studio Code öffnen
 
