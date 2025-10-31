@@ -1,10 +1,10 @@
 
-# Pygame Spiele mit dem NVIYOS projizieren.  
+# Pygame Spiele mit dem EVIYOS projizieren.  
 
 <p align="center">
     <img src="assets/Projektor.jpg" alt="Projektor"/>
     <br/>
-    <em>Der NVIYOS Projektor mit 25.600 einzeln ansteuerbaren LEDs. Damit können zum Beispiel Autoscheinwerfer so angesteuert werden, dass entgegenkommende Fahrzeuge nicht geblendet werden</em>
+    <em>Der EVIYOS Projektor mit 25.600 einzeln ansteuerbaren LEDs. Damit können zum Beispiel Autoscheinwerfer so angesteuert werden, dass entgegenkommende Fahrzeuge nicht geblendet werden</em>
 </p>
 
 
@@ -13,7 +13,7 @@
 |:---|:---:|
 
 
-### Auf dem Raspberry Pi des ENVIOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, dem du dein eigenes Pygame hinzufügen kannst. 
+### Auf dem Raspberry Pi des EVIYOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, dem du dein eigenes Pygame hinzufügen kannst. 
 
 ### Dazu den Projekt-Ordner in Visual Studio Code öffnen
 
