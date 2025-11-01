@@ -13,14 +13,12 @@
 |:---|:---:|
 
 
-### Auf dem Raspberry Pi des EVIYOS Projectors ist bereits ein Projekt-Gerüst vorbereitet, dem du dein eigenes Pygame hinzufügen kannst. 
 
-## Visual Studio Code öffnen mit Application Menu → Programming → Visual Studio Code
+## Visual Studio Code auf dem Raspberry öffnen
+Starte VSCode mit Application Menu (das ist das Raspi Symbol links ganz oben) → Programming → Visual Studio Code
 
 ## Öffne Projektfolder in Visual Studio Code
-
-Öffne Visual Studio Code und wähle im Menü **Datei → Ordner öffnen...** den Ordner `MintLabs/python-mit-projector` aus.  
-
+Öffne Visual Studio Code und wähle im Menü **Datei → Ordner öffnen...** den Ordner `MintLabs/python-mit-projector` aus. Diese Verzeichnis ist so vorbereitet, dass es die nötigen Programme enthält um den Projektor anzusteueren. 
 ### Im Ordner neue Datei `mein_pygame.py` erstellen
 
 Erstelle eine neue Python-Datei namens `mein_pygame.py` im Verzeichnis `MintLabs/python-mit-projector`. Füge folgenden Beispielcode ein.
