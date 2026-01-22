@@ -124,3 +124,4 @@ pygame.quit()
 projector.close()
 ```
 
+## Mehr Projekte und Anleitungen findest du [hier](https://wiki.mint-labs.de/)
