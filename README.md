@@ -14,6 +14,13 @@
 
 
 
+## Aufbau - pygame läuft jetzt auf einem Raspberry Pi
+Am OSRAM EVIYOS-Projektor ist ein Raspberry Pi installiert. Pygame läuft jetzt auf diesem Raspberry Pi, nicht mehr auf unserem Laptop. Dazu schließen wir eine Tastatur, einen Bildschirm und eine Maus direkt am Raspberry Pi an. Der Raspberry Pi steuert dann den EVIYOS-Projektor.
+
+<p align="center">
+    <img src="assets/aufbau-raspberry-projektor.svg" alt="Tastatur, Bildschirm und Maus sind mit dem Raspberry Pi verbunden. Auf dem Raspberry Pi laufen Visual Studio Code und pygame; er steuert den OSRAM EVIYOS-Projektor an." width="100%"/>
+</p>
+
 ## Visual Studio Code auf dem Raspberry öffnen
 Starte VSCode mit Application Menu (das ist das Raspi Symbol links ganz oben) → Programming → Visual Studio Code
 

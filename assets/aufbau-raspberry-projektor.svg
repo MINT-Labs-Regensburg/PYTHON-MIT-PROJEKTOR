@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-labelledby="title description">
+  <title id="title">Aufbau mit Raspberry Pi und EVIYOS-Projektor</title>
+  <desc id="description">Tastatur, Bildschirm und Maus sind am Raspberry Pi angeschlossen. Auf dem Raspberry Pi laufen Visual Studio Code und pygame. Der Raspberry Pi steuert den EVIYOS-Projektor an.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#245b58"/>
+    </marker>
+    <style>
+      text { font-family: "DejaVu Sans", sans-serif; fill: #183b3a; }
+      .label { font-size: 19px; font-weight: 700; }
+      .sub { font-size: 14px; fill: #42615e; }
+    </style>
+  </defs>
+  <rect width="960" height="390" rx="16" fill="#f3f7f2"/>
+
+  <g fill="none" stroke="#245b58" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M 240 88 H 315 Q 335 88 335 108 V 148 H 365"/>
+    <path d="M 240 195 H 365"/>
+    <path d="M 240 302 H 315 Q 335 302 335 282 V 242 H 365"/>
+    <path d="M 615 195 H 705"/>
+  </g>
+  <text x="660" y="178" text-anchor="middle" class="sub">steuert</text>
+
+  <g>
+    <rect x="35" y="55" width="205" height="66" rx="9" fill="#fff" stroke="#adc8bd" stroke-width="2"/>
+    <rect x="58" y="70" width="43" height="26" rx="3" fill="#f3c969" stroke="#a77a1e" stroke-width="2"/>
+    <path d="M 63 77 H 96 M 63 84 H 96 M 68 91 H 91" stroke="#a77a1e" stroke-width="2"/>
+    <text x="119" y="95" class="label">Tastatur</text>
+
+    <rect x="35" y="162" width="205" height="66" rx="9" fill="#fff" stroke="#adc8bd" stroke-width="2"/>
+    <rect x="56" y="175" width="48" height="34" rx="4" fill="#8ec8c1" stroke="#367d77" stroke-width="2"/>
+    <path d="M 80 209 V 216 M 68 217 H 92" stroke="#367d77" stroke-width="2"/>
+    <text x="119" y="202" class="label">Bildschirm</text>
+
+    <rect x="35" y="269" width="205" height="66" rx="9" fill="#fff" stroke="#adc8bd" stroke-width="2"/>
+    <path d="M 78 281 C 67 281 63 289 63 300 C 63 313 68 322 78 322 C 88 322 93 313 93 300 C 93 289 89 281 78 281 Z" fill="#e7a47f" stroke="#a65e3b" stroke-width="2"/>
+    <path d="M 78 283 V 296" stroke="#a65e3b" stroke-width="2"/>
+    <text x="119" y="309" class="label">Maus</text>
+  </g>
+
+  <g>
+    <rect x="365" y="116" width="250" height="158" rx="12" fill="#d9eee4" stroke="#36846e" stroke-width="3"/>
+    <rect x="384" y="136" width="44" height="44" rx="8" fill="#36846e"/>
+    <path d="M 405 146 C 400 139 392 141 393 147 C 397 147 401 149 404 153 C 407 149 411 147 416 147 C 417 141 409 139 405 146 Z" fill="#a8d88e"/>
+    <path d="M 405 151 C 400 146 394 151 395 157 C 389 158 389 166 395 169 C 394 176 401 180 406 175 C 412 180 419 176 417 169 C 423 166 421 158 416 157 C 417 151 411 146 405 151 Z" fill="#fff"/>
+    <path d="M 405 145 C 405 147 405 149 405 151" fill="none" stroke="#a8d88e" stroke-width="2" stroke-linecap="round"/>
+    <text x="443" y="156" class="label">Raspberry Pi</text>
+    <text x="490" y="207" text-anchor="middle" class="sub">Visual Studio Code</text>
+    <text x="490" y="232" text-anchor="middle" class="sub">pygame</text>
+  </g>
+
+  <g>
+    <rect x="705" y="116" width="220" height="158" rx="12" fill="#fff0d9" stroke="#c78435" stroke-width="3"/>
+    <rect x="739" y="155" width="90" height="54" rx="7" fill="#e5a84f" stroke="#9b6121" stroke-width="3"/>
+    <circle cx="829" cy="182" r="18" fill="#264b50" stroke="#fff" stroke-width="4"/>
+    <path d="M 755 151 V 140 H 812 V 151 M 764 211 V 222 M 804 211 V 222 M 754 223 H 814" fill="none" stroke="#9b6121" stroke-width="3" stroke-linecap="round"/>
+    <text x="815" y="247" text-anchor="middle" class="label">OSRAM EVIYOS</text>
+    <text x="815" y="267" text-anchor="middle" class="sub">Projektor</text>
+  </g>
+</svg>
